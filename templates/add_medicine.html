@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Medicine</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        h1 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 class="text-center">Add Medicine</h1>
+            <form action="{{ url_for('add_medicine') }}" method="POST">
+                <!-- Medicine Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Medicine Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <!-- Quantity -->
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" class="form-control" min="0" required>
+                </div>
+
+                <!-- Price -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price (INR)</label>
+                    <input type="number" step="0.01" id="price" name="price" class="form-control" min="0" required>
+                </div>
+
+                <!-- Expiration Date with Calendar -->
+                <div class="mb-3">
+                    <label for="expiration_date" class="form-label">Expiration Date</label>
+                    <input type="date" id="expiration_date" name="expiration_date" class="form-control" required>
+                </div>
+
+                <!-- Submit and Back Buttons -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Add Medicine</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Inventory</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
